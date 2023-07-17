@@ -21,9 +21,20 @@ var quotes = [
 
 
 
+var numRanOld = 0;
 
 function choose(){
     var nq = ``;
-    nq += `<h3>${quotes[(Math.floor(Math.random() * quotes.length))]}</h3>`
+    var numRanNew = (Math.floor(Math.random() * quotes.length));
+    if (numRanNew === numRanOld){
+        for(;;){
+            numRanNew = (Math.floor(Math.random() * quotes.length));
+            if(numRanNew !== numRanOld){
+                break;
+            }
+        }
+    }
+    nq += `<h3>${quotes[numRanNew]}</h3>`
     document.getElementById('box').innerHTML=nq;
+    numRanOld = numRanNew;
 };
